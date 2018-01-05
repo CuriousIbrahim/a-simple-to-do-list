@@ -1,8 +1,10 @@
 div#submit {
-    display: inline;
-
+/*    display: inline;*/
+    display: none;
 }
 
 button#delete {
     display: inline;
 }
+
+

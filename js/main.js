@@ -51,6 +51,14 @@ function main() {
         $(this).closest("tr").remove();
         
     });
+
+
+    $("#add-btn").on("click", function () {
+
+        $(this).next().fadeToggle(300);
+        $(this).next().css("display", "inline");
+
+    });
 }
 
 function appendItemToTable(item){
