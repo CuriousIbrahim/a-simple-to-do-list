@@ -39,10 +39,13 @@ function main() {
         var value = $(this).closest("tr").find("h4").html();
         
         for (i = 0; i < list.length; i++){
+            
             if (value === list[i]){
                 list.splice(i, 1);
             }
         }
+        
+        localStorage.setItem("list", JSON.stringify(list));
         
         $(this).closest("tr").remove();
         
