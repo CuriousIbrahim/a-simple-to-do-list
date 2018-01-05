@@ -4,3 +4,9 @@ h4 {
     padding: 10px 10px;
 }
 
+
+div#submit {
+/*    float: */
+    display: inline;
+    
+}
