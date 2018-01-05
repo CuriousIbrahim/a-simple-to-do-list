@@ -3,9 +3,24 @@ const BUTTON_HTML = "<td> <button class=\"btn btn-l btn-danger\">X</button> </td
 //var item = {id:undefined, text:undefined};
 
 var list = ["This is an item.", "This is another item!"];
+var submitShowing = false;
+
 
 function main() {
     
+    if (localStorage.getItem("submitShowing")){
+        submitShowing = JSON.parse(localStorage.getItem("submitShowing"));
+    } else {
+        localStorage.setItem("submitShowing", submitShowing);
+    }
+
+    if (submitShowing === true){
+        $("#submit").css("display", "inline");
+    } else {
+        $("#submit").css("display", "none");
+    }
+
+
     if (localStorage.getItem("list")){
         list = JSON.parse(localStorage.getItem("list"));
         
@@ -58,6 +73,14 @@ function main() {
         $(this).next().fadeToggle(300);
         $(this).next().css("display", "inline");
 
+        if (submitShowing){
+            submitShowing = false;
+            localStorage.setItem("submitShowing", submitShowing);
+        } else {
+            submitShowing = true;
+            localStorage.setItem("submitShowing", submitShowing);
+        }
+
     });
 }
 
@@ -67,7 +90,6 @@ function appendItemToTable(item){
 
 function createItemHtml(item){
     var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4>"+item+"</h4> </td>" + BUTTON_HTML + "</tr>";
-    console.log(html);
     return html;
 }
 
