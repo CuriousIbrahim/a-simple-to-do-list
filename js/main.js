@@ -25,6 +25,7 @@ function main() {
     $("#submit-btn").on("click", function() {
 
         var userInput = $(this).prev().val();
+        $(this).prev().val("");
         
         list.push(userInput);
         
