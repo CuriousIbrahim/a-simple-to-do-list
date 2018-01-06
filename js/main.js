@@ -1,4 +1,4 @@
-const BUTTON_HTML = "<td> <button class=\"btn btn-l btn-danger\">X</button> </td>";
+const REMOVE_BUTTON_HTML = "<td> <button id = \"remove\" class=\"btn btn-l btn-danger\">X</button> </td>";
 
 var list = [
     new Item(0, "This is an item."),
@@ -99,11 +99,15 @@ function main() {
 
     $("table").on("click", "#remove", function () {
 
-        var value = $(this).closest("tr").find("h4").html();
+        alert("clicked");
+
+        var id = $(this).closest("tr").find("h4").attr("id");
+
+        console.log(value);
 
         for (i = 0; i < list.length; i++) {
 
-            if (value === list[i]) {
+            if (id === list[i].id) {
                 list.splice(i, 1);
             }
         }
@@ -151,8 +155,7 @@ function appendItemToTable(item) {
 }
 
 function createItemHtml(item) {
-    var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4 id=\"" + item.id + "\">" + item.task + "</h4> </td>" + BUTTON_HTML + "</tr>";
-    console.log(html);
+    var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4 id=\"" + item.id + "\">" + item.task + "</h4> </td>" + REMOVE_BUTTON_HTML + "</tr>";
     return html;
 }
 
