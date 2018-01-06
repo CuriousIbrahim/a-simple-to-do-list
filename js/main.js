@@ -9,11 +9,11 @@ var submitShowing = false;
 
 var idCount = 2;
 
-var Item = {
-    id: null,
-    task: null,
-    beingEdited: false
-};
+//var Item = {
+//    id: null,
+//    task: null,
+//    beingEdited: false
+//};
 
 function Item(id, task) {
     this.id = id;
@@ -66,9 +66,13 @@ function getIdCount() {
 
 
 function addItemToLocalStorage(itemName) {
-    var task = new Item(getIdCount(), itemName)
+    var task = new Item(
+        Number(getIdCount()),
+        String(itemName)
+    );
     list.push(task);
-    localStorage.setItem("list", JSON.stringify(task));
+
+    localStorage.setItem("list", JSON.stringify(list));
     return task;
 }
 
