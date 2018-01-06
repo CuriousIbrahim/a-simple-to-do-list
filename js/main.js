@@ -1,9 +1,11 @@
 const REMOVE_BUTTON_HTML = "<td> <button id = \"remove\" class=\"btn btn-l btn-danger\">X</button> </td>";
 
-var list = [
+const startingTasks = [
     new Item(0, "This is an item."),
     new Item(1, "This is another item!")
 ]
+
+var list = startingTasks;
 
 var submitShowing = false;
 
