@@ -11,12 +11,6 @@ var submitShowing = false;
 
 var idCount = 2;
 
-//var Item = {
-//    id: null,
-//    task: null,
-//    beingEdited: false
-//};
-
 function Item(id, task) {
     this.id = id;
     this.task = task;
