@@ -1,55 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        
-        <title>Website 3</title>
-        <meta charset="utf-8">        
+<head>
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/styles.css" rel="stylesheet">
-        
-    </head>
+    <title>Website 3</title>
+    <meta charset="utf-8">
 
-    <body>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="js/main.js"></script>
-    
-        <header class="container">
-        
-            <h1>To Do List <small>Practicing Web Development</small></h1>
-        
-        </header>
-        
-        <hr>
-        
-        <div class="container">
-        
-            <button id ="add-btn" class="btn btn-md btn-primary">Add Task</button>
-            <div id="submit">
-                <input id="submit-input" type="text">
-                <button class="btn btn-s inline" id="submit-btn">Submit</button>
-            </div>
+</head>
+
+<body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <header class="container">
+
+        <h1>To Do List <small>Practicing Web Development</small></h1>
+
+    </header>
+
+    <hr>
+
+    <div class="container">
+
+        <button id="add-btn" class="btn btn-md btn-primary">Add Task</button>
+        <div id="submit">
+            <input id="submit-input" type="text">
+            <button class="btn btn-s inline" id="submit-btn">Submit</button>
         </div>
-        
-        <br>
-        
-        <div class="container" id="to-do-list">
+    </div>
+
+    <br>
+
+    <div class="container" id="to-do-list">
+
+        <table class="table table-striped">
+
+            <tr>
+
+
+            </tr>
             
-            <table class="table table-striped">
-            
-                <tr>
-                
+            <tr>
+
+<!--                   Testing -->
+                    <td class="col-md-12 col-sm-12 col-xs-12">
+                        <h4>This is an item.</h4>
+                    </td>
+
+                    <td>
+                        <button id="edit" class="btn btn-l btn-warning">Edit</button>
+                    </td>
                     
-                
+                    <td>
+                        <button id="remove" class="btn btn-l btn-danger">X</button>
+                    </td>
                 </tr>
-            
-            </table>
-            
-        
-        </div>
 
-    </body>
+        </table>
+
+
+    </div>
+
+</body>
 
 </html>
