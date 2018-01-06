@@ -5,9 +5,11 @@ const BUTTON_HTML = "<td> <button class=\"btn btn-l btn-danger\">X</button> </td
 var list = ["This is an item.", "This is another item!"];
 var submitShowing = false;
 
+var currentIdCount = 0;
+
 var item = {id: null, task: null, beingEdited:false};
 
-function main() {
+function startUpLocalStorage() {
 
     if (localStorage.getItem("submitShowing")) {
         submitShowing = JSON.parse(localStorage.getItem("submitShowing"));
@@ -37,6 +39,13 @@ function main() {
         }
 
     }
+
+}
+
+
+function main() {
+
+    startUpLocalStorage();
 
     $("#submit-btn").on("click", function () {
 
