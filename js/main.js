@@ -1,8 +1,8 @@
-const REMOVE_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id = \"remove\" class=\"btn btn-l btn-danger\">X</button> </td>";
+const REMOVE_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id = \"remove\" class=\"btn btn-l btn-danger\"> <span class=\"glyphicon glyphicon-remove\" aria-hidden=\"true\"></span> </button> </td>";
 
-const EDIT_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id=\"edit\" class=\"btn btn-l btn-warning\">Edit</button> </td>";
+const EDIT_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id=\"edit\" class=\"btn btn-l btn-warning\"> <span class=\"glyphicon glyphicon-edit\" aria-hidden=\"true\"></span> </button> </td>";
 
-const SAVE_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id=\"save\" class=\"btn btn-l btn-success\">Save</button> </td>";
+const SAVE_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id=\"save\" class=\"btn btn-l btn-success\"> <span class=\"glyphicon glyphicon-floppy-save\" aria-hidden=\"true\"></span> </button> </td>";
 
 
 const startingTasks = [
