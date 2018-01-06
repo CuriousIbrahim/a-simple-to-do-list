@@ -114,8 +114,6 @@ function main() {
 
         var id = $(this).closest("tr").find("h4").attr("id");
 
-        console.log(value);
-
         for (i = 0; i < list.length; i++) {
 
             if (id === list[i].id) {
