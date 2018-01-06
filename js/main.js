@@ -1,28 +1,40 @@
 const BUTTON_HTML = "<td> <button class=\"btn btn-l btn-danger\">X</button> </td>";
 
-//var item = {id:undefined, text:undefined};
+var list = [
+    new Item(0, "This is an item."),
+    new Item(1, "This is another item!")
+]
 
-var list = ["This is an item.", "This is another item!"];
 var submitShowing = false;
 
-var currentIdCount = 0;
+var idCount = 2;
 
-var item = {id: null, task: null, beingEdited:false};
+var Item = {
+    id: null,
+    task: null,
+    beingEdited: false
+};
+
+function Item(id, task) {
+    this.id = id;
+    this.task = task;
+    this.beingEdited = false;
+}
+
 
 function startUpLocalStorage() {
+
+    if (localStorage.getItem("idCount")) {
+        idCount = JSON.parse(localStorage.getItem("idCount"))
+    } else {
+        localStorage.setItem("idCount", idCount);
+    }
 
     if (localStorage.getItem("submitShowing")) {
         submitShowing = JSON.parse(localStorage.getItem("submitShowing"));
     } else {
-        localStorage.setItem("submitShowing", submitShowing);
+        localStorage.setItem("submitShowing", JSON.stringify(submitShowing));
     }
-
-    if (submitShowing === true) {
-        $("#submit").css("display", "inline");
-    } else {
-        $("#submit").css("display", "none");
-    }
-
 
     if (localStorage.getItem("list")) {
         list = JSON.parse(localStorage.getItem("list"));
@@ -32,6 +44,9 @@ function startUpLocalStorage() {
         }
 
     } else {
+
+
+
         localStorage.setItem("list", JSON.stringify(list));
 
         for (i = 0; i < list.length; i++) {
@@ -42,21 +57,39 @@ function startUpLocalStorage() {
 
 }
 
+function getIdCount() {
+    var id = JSON.parse(localStorage.getItem("idCount"));
+    var toSave = id + 1;
+    localStorage.setItem("idCount", JSON.stringify(toSave));
+    return id;
+}
+
+
+function addItemToLocalStorage(itemName) {
+    var task = new Item(getIdCount(), itemName)
+    list.push(task);
+    localStorage.setItem("list", JSON.stringify(task));
+    return task;
+}
 
 function main() {
 
     startUpLocalStorage();
+
+    if (submitShowing === true) {
+        $("#submit").css("display", "inline");
+    } else {
+        $("#submit").css("display", "none");
+    }
 
     $("#submit-btn").on("click", function () {
 
         var userInput = $(this).prev().val();
         $(this).prev().val("");
 
-        list.push(userInput);
+        var task = addItemToLocalStorage(userInput);
 
-        localStorage.setItem("list", JSON.stringify(list));
-
-        appendItemToTable(userInput);
+        appendItemToTable(task);
 
     });
 
@@ -81,7 +114,7 @@ function main() {
     $("table").on("click", "#edit", function () {
 
 
-//        alert("clicked");
+        //        alert("clicked");
 
         alert($(this).closest("tr").find("h4").html());
 
@@ -114,7 +147,8 @@ function appendItemToTable(item) {
 }
 
 function createItemHtml(item) {
-    var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4>" + item + "</h4> </td>" + BUTTON_HTML + "</tr>";
+    var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4 id=\"" + item.id + "\">" + item.task + "</h4> </td>" + BUTTON_HTML + "</tr>";
+    console.log(html);
     return html;
 }
 
