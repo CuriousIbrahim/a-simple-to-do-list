@@ -21,7 +21,6 @@ function Item(id, task) {
     this.task = task;
 }
 
-
 function startUpLocalStorage() {
 
     if (localStorage.getItem("idCount")) {
@@ -74,6 +73,15 @@ function addItemToLocalStorage(itemName) {
 
     localStorage.setItem("list", JSON.stringify(list));
     return task;
+}
+
+function appendItemToTable(item) {
+    $("table").append(createItemHtml(item));
+}
+
+function createItemHtml(item) {
+    var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4 id=\"" + item.id + "\">" + item.task + "</h4> </td>" + EDIT_BUTTON_HTML +REMOVE_BUTTON_HTML + "</tr>";
+    return html;
 }
 
 function main() {
@@ -173,14 +181,6 @@ function main() {
 
 }
 
-function appendItemToTable(item) {
-    $("table").append(createItemHtml(item));
-}
-
-function createItemHtml(item) {
-    var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4 id=\"" + item.id + "\">" + item.task + "</h4> </td>" + EDIT_BUTTON_HTML +REMOVE_BUTTON_HTML + "</tr>";
-    return html;
-}
 
 
 
