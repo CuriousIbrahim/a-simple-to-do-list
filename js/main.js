@@ -88,7 +88,6 @@ function main() {
 
     function add(){
         var userInput = $("#submit-input").val();
-        console.log(userInput);
         $("#submit-input").val("");
 
         var task = addItemToLocalStorage(userInput);
