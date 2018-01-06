@@ -86,14 +86,25 @@ function main() {
         $("#submit").css("display", "none");
     }
 
-    $("#submit-btn").on("click", function () {
-
-        var userInput = $(this).prev().val();
-        $(this).prev().val("");
+    function add(){
+        var userInput = $("#submit-input").val();
+        console.log(userInput);
+        $("#submit-input").val("");
 
         var task = addItemToLocalStorage(userInput);
 
         appendItemToTable(task);
+    }
+
+    $("#submit-btn").on("click", function(){
+        add();
+    });
+
+    $("#submit-input").keypress(function (event){
+
+        if (event.which === 13){
+            add();
+        }
 
     });
 
