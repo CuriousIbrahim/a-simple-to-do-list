@@ -1,4 +1,9 @@
-const REMOVE_BUTTON_HTML = "<td> <button id = \"remove\" class=\"btn btn-l btn-danger\">X</button> </td>";
+const REMOVE_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id = \"remove\" class=\"btn btn-l btn-danger\">X</button> </td>";
+
+const EDIT_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id=\"edit\" class=\"btn btn-l btn-warning\">Edit</button> </td>";
+
+const SAVE_BUTTON_HTML = "<td class=\"col-md-1 col-sm-1 col-xs-1\"> <button id=\"save\" class=\"btn btn-l btn-success\">Save</button> </td>";
+
 
 const startingTasks = [
     new Item(0, "This is an item."),
@@ -82,7 +87,7 @@ function main() {
         $("#submit").css("display", "none");
     }
 
-    function add(){
+    function add() {
         var userInput = $("#submit-input").val();
         $("#submit-input").val("");
 
@@ -91,13 +96,13 @@ function main() {
         appendItemToTable(task);
     }
 
-    $("#submit-btn").on("click", function(){
+    $("#submit-btn").on("click", function () {
         add();
     });
 
-    $("#submit-input").keypress(function (event){
+    $("#submit-input").keypress(function (event) {
 
-        if (event.which === 13){
+        if (event.which === 13) {
             add();
         }
 
@@ -121,14 +126,19 @@ function main() {
     });
 
 
+    var beingEdited = false;
+
+    $("table").on("click", "#save", function () {
+
+        $(this).closest("td").replaceWith(EDIT_BUTTON_HTML);
+
+    });
+
     $("table").on("click", "#edit", function () {
 
-
-        alert($(this).closest("tr").find("h4").html());
-
         $(this).closest("tr").find("h4").attr("contenteditable", "true");
-
-
+        beingEdited = true;
+        $(this).closest("td").replaceWith(SAVE_BUTTON_HTML);
     });
 
     $("#add-btn").on("click", function () {
