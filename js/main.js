@@ -110,14 +110,12 @@ function main() {
 
     $("table").on("click", "#remove", function () {
 
-        alert("clicked");
-
-        var id = $(this).closest("tr").find("h4").attr("id");
-
+        var id = Number($(this).closest("tr").find("h4").attr("id"));
         for (i = 0; i < list.length; i++) {
 
             if (id === list[i].id) {
                 list.splice(i, 1);
+                break;
             }
         }
 
@@ -130,8 +128,6 @@ function main() {
 
     $("table").on("click", "#edit", function () {
 
-
-        //        alert("clicked");
 
         alert($(this).closest("tr").find("h4").html());
 
