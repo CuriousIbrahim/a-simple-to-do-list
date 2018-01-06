@@ -19,7 +19,6 @@ var idCount = 2;
 function Item(id, task) {
     this.id = id;
     this.task = task;
-    this.beingEdited = false;
 }
 
 
@@ -130,6 +129,20 @@ function main() {
 
     $("table").on("click", "#save", function () {
 
+        $(this).closest("tr").find("h4").attr("contenteditable", "false");
+
+        var id = Number($(this).closest("tr").find("h4").attr("id"));
+        var text = $(this).closest("tr").find("h4").html();
+
+        for (i = 0; i < list.length; i++){
+            if (list[i].id === id){
+                list[i].task = text;
+                break;
+            }
+        }
+
+        localStorage.setItem("list", JSON.stringify(list));
+
         $(this).closest("td").replaceWith(EDIT_BUTTON_HTML);
 
     });
@@ -165,7 +178,7 @@ function appendItemToTable(item) {
 }
 
 function createItemHtml(item) {
-    var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4 id=\"" + item.id + "\">" + item.task + "</h4> </td>" + REMOVE_BUTTON_HTML + "</tr>";
+    var html = "<tr> <td class=\"col-md-12 col-sm-12 col-xs-12\"> <h4 id=\"" + item.id + "\">" + item.task + "</h4> </td>" + EDIT_BUTTON_HTML +REMOVE_BUTTON_HTML + "</tr>";
     return html;
 }
 
